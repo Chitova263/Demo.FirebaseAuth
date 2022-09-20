@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+
+#  demo-web-api:
+#    image: web-api
+#    build:
+#        context: .
+#        dockerfile: src/Demo.Api/Dockerfile
+#    ports:
+#      - "5004:80"
+#    depends_on:
+#        - consul
+  
+  demo-idsrv:
+    image: idsrv
+    build:
+        context: .
+        dockerfile: Demo.IdentityService/Dockerfile
+    ports:
+      - "5005:80"
+    depends_on:
+      - consul
