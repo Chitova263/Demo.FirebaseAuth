@@ -5,15 +5,15 @@ services:
     ports:
       - "8500:8500"
 
-#  demo-web-api:
-#    image: web-api
-#    build:
-#        context: .
-#        dockerfile: src/Demo.Api/Dockerfile
-#    ports:
-#      - "5004:80"
-#    depends_on:
-#        - consul
+  demo-web-api:
+    image: web-api
+    build:
+        context: .
+        dockerfile: Demo.Api/Dockerfile
+    ports:
+      - "5004:80"
+    depends_on:
+        - consul
   
   demo-idsrv:
     image: idsrv
