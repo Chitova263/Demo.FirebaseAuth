@@ -13,14 +13,12 @@ services:
     ports:
       - "5004:80"
     depends_on:
-        - consul
+      - consul
   
-  demo-idsrv:
-    image: idsrv
+  demo-identity-server:
+    image: id
     build:
         context: .
         dockerfile: Demo.IdentityService/Dockerfile
     ports:
       - "5005:80"
-    depends_on:
-      - consul

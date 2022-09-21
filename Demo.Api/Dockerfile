@@ -1,8 +1,4 @@
-﻿
-ENTRYPOINT ["dotnet", "Demo.Api.dll"]
-
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 
@@ -11,14 +7,14 @@ WORKDIR /src
 
 COPY "Demo.FirebaseAuth.sln" "Demo.FirebaseAuth.sln"
 COPY "Demo.IdentityService/Demo.IdentityService.csproj" "Demo.IdentityService/Demo.IdentityService.csproj"
-COPY "Demo.Shared/Demo.Shared.csproj" "Demo.Shared/Demo.Shared.csproj"
 COPY "Demo.Api/Demo.Api.csproj" "Demo.Api/Demo.Api.csproj"
+COPY "Demo.Common/Demo.Common.csproj" "Demo.Common/Demo.Common.csproj"
 
 RUN dotnet restore "Demo.FirebaseAuth.sln"
 
 COPY . .
-WORKDIR /Demo.Api
-RUN dotnet publish --no-restore -c Release -o /app
+WORKDIR /src/Demo.Api
+RUN dotnet publish --configuration Release -o /app
 
 FROM build AS publish
 

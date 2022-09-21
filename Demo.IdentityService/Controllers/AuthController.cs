@@ -1,9 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Demo.IdentityService.Models;
 using Demo.IdentityService.Services.AuthService;
 using Demo.IdentityService.Services.EmailService;
 using FirebaseAdmin;
 using FirebaseAdmin.Auth;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Demo.IdentityService.Controllers
 {

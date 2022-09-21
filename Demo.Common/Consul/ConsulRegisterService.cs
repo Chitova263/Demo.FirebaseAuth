@@ -1,42 +1,47 @@
 ﻿using Consul;
+using Demo.Api.Consul;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Demo.Shared.Consul;
+namespace Demo.Common.Consul;
 public class ConsulRegisterService: IHostedService
 {
     private readonly IConsulClient _consulClient;
-    private readonly IOptions<ConsulConfiguration> _consulConfiguration;
     private readonly ILogger<ConsulRegisterService> _logger;
     private readonly IHostApplicationLifetime _hostApplicationLifetime;
+    private readonly ConsulConfiguration _consulConfiguration;
 
     public ConsulRegisterService(
         IConsulClient consulClient,
-        IOptions<ConsulConfiguration> consulConfiguration,
+        IOptions<ConsulConfiguration> consulConfigurationOptions,
         ILogger<ConsulRegisterService> logger, 
         IHostApplicationLifetime hostApplicationLifetime)
     {
         _consulClient = consulClient ?? throw new ArgumentNullException(nameof(consulClient));
-        _consulConfiguration = consulConfiguration ?? throw new ArgumentNullException(nameof(consulConfiguration));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _hostApplicationLifetime = hostApplicationLifetime ?? throw new ArgumentNullException(nameof(hostApplicationLifetime));
+        _consulConfiguration = consulConfigurationOptions.Value ?? throw new ArgumentNullException(nameof(consulConfigurationOptions));
+        
+        _logger.LogInformation($"######################ConsulRegisterService is created {_consulConfiguration.ServiceName}");
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
+        _logger.LogWarning("**************************************************************************");
+        
         // deregister service on shutdown
-        await _consulClient.Agent.ServiceDeregister(_consulConfiguration.Value.ServiceId, cancellationToken);
+        await _consulClient.Agent.ServiceDeregister(_consulConfiguration.ServiceId, cancellationToken);
     
-        _logger.LogInformation("Registering service with Consul");
-        var uri = new Uri(_consulConfiguration.Value.Address);
+        _logger.LogInformation($"Registering service ID:  {_consulConfiguration.ServiceId}");
+        var uri = new Uri(_consulConfiguration.Address);
         var registration = new AgentServiceRegistration()
         {
-            ID = _consulConfiguration.Value.ServiceId,
-            Name = _consulConfiguration.Value.ServiceName,
+            ID = _consulConfiguration.ServiceId,
+            Name = _consulConfiguration.ServiceName,
             Address = uri.Host,
             Port = uri.Port,
-            Tags = new[] { "IdentityService" },
+            Tags = new[] { _consulConfiguration.ServiceName },
             // Check = new AgentServiceCheck()
             // {
             //     DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),
@@ -57,6 +62,6 @@ public class ConsulRegisterService: IHostedService
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
-        await _consulClient.Agent.ServiceDeregister(_consulConfiguration.Value.ServiceId, cancellationToken);
+        await _consulClient.Agent.ServiceDeregister(_consulConfiguration.ServiceId, cancellationToken);
     }
 }

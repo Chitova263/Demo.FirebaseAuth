@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Demo.IdentityService.Services.AuthService.Models;
 
 namespace Demo.IdentityService.Services.AuthService;

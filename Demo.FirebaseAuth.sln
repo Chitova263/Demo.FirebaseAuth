@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Api", "Demo.Api\Demo.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.IdentityService", "Demo.IdentityService\Demo.IdentityService.csproj", "{49EA185B-1692-48FE-BDB1-D1C47DE40633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Shared", "Demo.Shared\Demo.Shared.csproj", "{6D033380-9AFB-4419-BB94-BE643A7D057D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Common", "Demo.Common\Demo.Common.csproj", "{89760856-36E2-4802-828E-493FBE2F1270}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +26,9 @@ Global
 		{49EA185B-1692-48FE-BDB1-D1C47DE40633}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49EA185B-1692-48FE-BDB1-D1C47DE40633}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49EA185B-1692-48FE-BDB1-D1C47DE40633}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D033380-9AFB-4419-BB94-BE643A7D057D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D033380-9AFB-4419-BB94-BE643A7D057D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D033380-9AFB-4419-BB94-BE643A7D057D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D033380-9AFB-4419-BB94-BE643A7D057D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89760856-36E2-4802-828E-493FBE2F1270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89760856-36E2-4802-828E-493FBE2F1270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89760856-36E2-4802-828E-493FBE2F1270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89760856-36E2-4802-828E-493FBE2F1270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -7,14 +7,14 @@ WORKDIR /src
 
 COPY "Demo.FirebaseAuth.sln" "Demo.FirebaseAuth.sln"
 COPY "Demo.IdentityService/Demo.IdentityService.csproj" "Demo.IdentityService/Demo.IdentityService.csproj"
-COPY "Demo.Shared/Demo.Shared.csproj" "Demo.Shared/Demo.Shared.csproj"
 COPY "Demo.Api/Demo.Api.csproj" "Demo.Api/Demo.Api.csproj"
+COPY "Demo.Common/Demo.Common.csproj" "Demo.Common/Demo.Common.csproj"
 
 RUN dotnet restore "Demo.FirebaseAuth.sln"
 
 COPY . .
-WORKDIR /Demo.IdentityService
-RUN dotnet publish --no-restore -c Release -o /app
+WORKDIR /src/Demo.IdentityService
+RUN dotnet publish --configuration Release -o /app
 
 FROM build AS publish
 
@@ -22,3 +22,8 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Demo.IdentityService.dll"]
+
+
+
+
+

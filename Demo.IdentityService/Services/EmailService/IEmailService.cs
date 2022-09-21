@@ -1,3 +1,6 @@
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace Demo.IdentityService.Services.EmailService;
 
 public interface IEmailService

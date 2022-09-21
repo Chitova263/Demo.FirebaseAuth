@@ -1,7 +1,7 @@
 using Consul;
+using Demo.Api.Consul;
 using Demo.Api.Services;
-using Demo.Shared;
-using Demo.Shared.Consul;
+using Demo.Common.Consul;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -40,6 +40,8 @@ builder.Services.AddSingleton<IConsulClient, ConsulClient>(provider => new Consu
 }));
 
 builder.Services.AddHostedService<ConsulRegisterService>();
+
+
 
 builder.Services.Configure<ConsulConfiguration>(configuration.GetSection("Consul"));
 

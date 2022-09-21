@@ -1,4 +1,4 @@
-namespace Demo.Shared.Consul;
+namespace Demo.Api.Consul;
 
 public class ConsulConfiguration
 {

@@ -1,12 +1,12 @@
 using Consul;
+using Demo.Api.Consul;
+using Demo.Common.Consul;
 using Demo.IdentityService.Config;
 using Demo.IdentityService.Services.AuthService;
 using Demo.IdentityService.Services.EmailService;
-using Demo.Shared;
-using Demo.Shared.Consul;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
-using Microsoft.Extensions.Options;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

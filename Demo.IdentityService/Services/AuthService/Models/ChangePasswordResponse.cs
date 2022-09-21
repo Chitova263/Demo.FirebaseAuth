@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Demo.IdentityService.Services.AuthService.Models;
 
 public class ChangePasswordResponse

@@ -1,6 +1,10 @@
+using System;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Demo.IdentityService.Config;
 using Demo.IdentityService.Services.AuthService.Models;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
