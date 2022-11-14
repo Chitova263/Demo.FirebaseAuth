@@ -4,6 +4,7 @@ services:
     image: consul
     ports:
       - "8500:8500"
+    restart: always
 
   demo-web-api:
     image: web-api
@@ -14,6 +15,7 @@ services:
       - "5004:80"
     depends_on:
       - consul
+    restart: always
   
   demo-identity-server:
     image: id
@@ -22,3 +24,21 @@ services:
         dockerfile: Demo.IdentityService/Dockerfile
     ports:
       - "5005:80"
+    restart: always
+
+#  email-service:
+#    image: email
+#    build:
+#      context: .
+#      dockerfile: Demo.EmailService/Dockerfile
+#    ports:
+#      - "7145:80"
+#    restart: always
+
+  grafana:
+    image: grafana/grafana-enterprise
+    ports:
+      - "3000:3000"
+    depends_on:
+      - consul
+    restart: always

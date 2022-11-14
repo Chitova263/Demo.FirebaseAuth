@@ -1,0 +1,29 @@
+<div class="login-container">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()" id="login" novalidate>
+    <div class="form-input">
+      <label for="email">Email address</label>
+      <input type="email" [formControl]="email" id="email" placeholder="Email address"/>
+    </div>
+
+    <div class="form-input">
+      <label for="password">Password</label>
+      <input type="password" [formControl]="password" id="password" placeholder="Password"/>
+    </div>
+
+  </form>
+
+  <div class="btn">
+    <button type="submit" form="login" mat-raised-button color="primary">LOG IN</button>
+  </div>
+
+  <hr>
+
+  <div>
+    <span>Don't have an account?</span>
+  </div>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="login()">SIGN UP FOR SPOTIFY</button>
+  </div>
+
+</div>
